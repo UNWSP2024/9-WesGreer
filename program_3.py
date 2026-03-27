@@ -1,16 +1,18 @@
-# Program #3: Average Numbers
-# Assume a file containing a series of integers is named numbers.txt and exists on the computer's disk.
-# (please use the provided numbers.txt)
-# Write a program that reads all of the numbers stored in the file and calculates their total.  
-
-# The program should handle the following exceptions: 
-
-# It should handle any IOError exceptions that are raised.
-# It should handle any ValueError exceptions that are raised when the items that are read from the file 
-# are converted to a number.
+# Number File Average Program
+# Written by Wesley Greer on 3/27/2026
 def sum_numbers_from_file():
     ######################
-    # Add your code here #
+    try:
+        with open(numbers.txt, 'r') as num:
+            numbers = [float(line.strip()) for line in num]
+            average = sum(numbers) / len(numbers)
+            print('The average of all the numbers within the file is:', average)
+    except ValueError:
+        print('ERROR: Non-numeric data was found within the file.')
+    except ZeroDivisionError:
+        print('ERROR: There are no numbers within the file.')
+    except IOError:
+        print('ERROR: File was not found.')
     ######################
     print('In the sum_numbers_from_file function')
 
